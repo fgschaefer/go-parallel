@@ -24,3 +24,5 @@ parallel.RunWorkers(8, func(workerNum, workerCount int) {
     }
 })
 ```
+
+`RunWorkers` returns when all workers have run to completion, allowing a task to be performed in parallel but treated more simply as a synchronous call.
