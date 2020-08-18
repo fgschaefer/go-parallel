@@ -9,3 +9,18 @@ Simple parallel processing utilities for Go.
 See the [API documentation](https://pkg.go.dev/github.com/mandykoh/go-parallel) for more details.
 
 This software is made available under an [MIT license](LICENSE).
+
+
+## Example usage
+
+Split processing of a large number of things across eight workers:
+
+```go
+var thingsToProcess []Thing
+
+parallel.RunWorkers(8, func(workerNum, workerCount int) {
+    for i := workerNum; i < len(thingsToProcess); i += workerCount {
+        processThing(thingsToProcess[i])
+    }
+})
+```
